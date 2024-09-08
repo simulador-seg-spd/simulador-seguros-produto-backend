@@ -52,7 +52,9 @@
       }
     }
   ],
-  "requiresCompatibilities": [],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "tags": [
     {
       "key": "projeto",
