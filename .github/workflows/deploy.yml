@@ -7,10 +7,8 @@ on:
       - main # O deploy será acionado quando houver push na branch 'main'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
   deploy_backend:
-    runs-on: ubuntu-latest
+    name: Deploy Backend
     uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main
     with:
       project-language: 'java' # Ou 'python', dependendo do projeto
