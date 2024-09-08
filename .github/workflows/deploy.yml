@@ -1,6 +1,7 @@
 name: CI/CD produto-backend
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main # O deploy será acionado quando houver push na branch 'main'
