@@ -9,9 +9,9 @@ on:
 jobs:
   deploy_backend:
     name: Deploy Backend
-    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@v1
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main
     with:
-      project-language: 'java' # Ou 'python', dependendo do projeto
+      project-language: 'java'
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
       aws-region: 'sa-east-1'
       aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
