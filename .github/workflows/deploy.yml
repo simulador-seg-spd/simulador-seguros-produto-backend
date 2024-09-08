@@ -9,14 +9,10 @@ jobs:
   deploy_backend:
     runs-on: ubuntu-latest
 
-  checkout:
-    name: Checkout repository
-    uses: actions/checkout@v2
-  deploy-backend:
-    name: Deploy to AWS ECS using generic deploy-backend action
+    # Usar o workflow reutilizável no nível do job
     uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main # Referencie o repositório onde a action genérica está hospedada
     with:
-      project-language: 'java'
+      project-language: 'java' # Ou 'python', dependendo do projeto
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
       aws-region: 'sa-east-1'
       aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
