@@ -5,17 +5,21 @@ on:
   push:
     branches:
       - main
+
 permissions:
-  id-token: write # Necessário se você estiver usando OIDC para autenticação com AWS
-  contents: read # Necessário para ler o conteúdo do repositório
-  actions: write # Necessário para interagir com outras actions e workflows
+  id-token: write
+  contents: read
+  actions: write
+
 jobs:
   deploy_backend:
-    name: Deploy Backend
-    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main # Verifique se o branch está correto
+    runs-on: ubuntu-latest
+    environment: produto-backend # Especifica o ambiente onde os secrets estão configurados
+
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main
     with:
       project-language: 'java'
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
       aws-region: 'sa-east-1'
-      aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
+      aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }} # Agora vai pegar o secret do ambiente
       stack-name: 'simulador-seguros-produto-backend'
