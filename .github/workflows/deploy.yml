@@ -1,0 +1,23 @@
+name: Deploy My Backend
+
+on:
+  push:
+    branches:
+      - main # O deploy será acionado quando houver push na branch 'main'
+
+jobs:
+  deploy_backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to AWS ECS using generic action
+        uses: user/repo/.github/workflows/deploy-backend.yml@main # Substitua 'user/repo' pelo repositório onde a action genérica está hospedada
+        with:
+          project-language: 'java' # Ou 'java', dependendo do projeto
+          aws-ecr-repository: 'simulador-seguros-produto-backend' # Nome do repositório ECR
+          aws-region: 'sa-east-1' # Região AWS
+          aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }} # ID da conta AWS
+          stack-name: 'simulador-seguros-produto-backend' # Nome da stack do CloudFormation

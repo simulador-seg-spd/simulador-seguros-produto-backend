@@ -1,0 +1,18 @@
+{
+  "VpcId": "vpc-0f934220b89649d2b",
+  "SubnetIds": [
+    "subnet-04e9d31e9f865052b",
+    "subnet-058829e3408793814",
+    "subnet-07ea24157b1d94ec3",
+    "subnet-096c79de7363b0c44",
+    "subnet-0a13a837d8d1ba278",
+    "subnet-0f60cf8bb7fd11717"
+  ],
+  "ClusterName": "ProdutoSimuladorCluster",
+  "ServiceName": "simulador-seguros-produto-backend",
+  "ContainerName": "simulador-seguros-produto-backend",
+  "ContainerPort": 8080,
+  "DesiredCount": 2,
+  "TaskCpu": "1",
+  "TaskMemory": "256"
+}
