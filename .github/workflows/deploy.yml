@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Usar o workflow reutilizável no nível do job
-    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main # Referencie o repositório onde a action genérica está hospedada
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@v1
     with:
       project-language: 'java' # Ou 'python', dependendo do projeto
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
