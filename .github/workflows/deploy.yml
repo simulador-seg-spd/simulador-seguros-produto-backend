@@ -1,12 +1,12 @@
 name: Deploy Backend
 
 on:
-  workflow_dispatch: # Permite iniciar manualmente o deploy via interface do GitHub
+  workflow_dispatch:
 
 jobs:
   # Executa o CI para buildar a imagem e enviá-la para o ECR
   build_and_push_image:
-    uses: ./ci.yml # Chama o workflow CI diretamente como job
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/ci.yml@main # Referenciando workflow de outro repositório
     with:
       project-language: ${{ inputs.project-language }}
       AWS_ECR_REPOSITORY: ${{ inputs.aws-ecr-repository }}
@@ -15,11 +15,11 @@ jobs:
 
   # Executa o CD para fazer o deploy no ECS
   deploy_to_ecs:
-    needs: build_and_push_image # Certifica-se de que o job de CI seja concluído antes de rodar o CD
-    uses: ./cd.yml # Chama o workflow CD diretamente como job
+    needs: build_and_push_image
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/cd.yml@main # Referenciando workflow de outro repositório
     with:
       stack-name: ${{ inputs.stack-name }}
       AWS_ECR_REPOSITORY: ${{ inputs.aws-ecr-repository }}
       AWS_REGION: ${{ inputs.aws-region }}
       AWS_ACCOUNT_ID: ${{ inputs.aws-account-id }}
-      ImageUrl: ${{ needs.build_and_push_image.outputs.image-url }} # Usa o output do CI
+      ImageUrl: ${{ needs.build_and_push_image.outputs.image-url }}
