@@ -13,13 +13,11 @@ permissions:
 
 jobs:
   deploy_backend:
-    runs-on: ubuntu-latest
-    environment: produto-backend # Especifica o ambiente onde os secrets estão configurados
-
+    environment: produto-backend
     uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main
     with:
       project-language: 'java'
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
       aws-region: 'sa-east-1'
-      aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }} # Agora vai pegar o secret do ambiente
+      aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
       stack-name: 'simulador-seguros-produto-backend'
