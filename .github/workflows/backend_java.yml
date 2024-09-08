@@ -12,7 +12,7 @@ permissions:
 jobs:
   deploy_backend:
     name: Deploy Backend
-    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@@main # Verifique se o branch está correto
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main # Verifique se o branch está correto
     with:
       project-language: 'java'
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
