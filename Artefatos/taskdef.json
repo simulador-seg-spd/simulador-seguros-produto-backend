@@ -2,7 +2,7 @@
   "family": "simulador-seguros-produto-backend",
   "taskRoleArn": "arn:aws:iam::112542574358:role/ecs-simulador-seguros-produto-backend",
   "executionRoleArn": "arn:aws:iam::112542574358:role/ecsTaskExecutionRole",
-  "networkMode": "bridge",
+  "networkMode": "awsvpc",
   "cpu": "256",
   "memory": "512",
   "containerDefinitions": [
