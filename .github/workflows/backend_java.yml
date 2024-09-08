@@ -19,3 +19,5 @@ jobs:
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
       aws-region: 'sa-east-1'
       stack-name: 'simulador-seguros-produto-backend'
+    secrets:
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
