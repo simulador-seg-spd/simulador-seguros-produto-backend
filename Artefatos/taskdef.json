@@ -1,0 +1,70 @@
+{
+  "family": "simulador-seguros-produto-backend",
+  "taskRoleArn": "arn:aws:iam::112542574358:role/ecs-simulador-seguros-produto-backend",
+  "executionRoleArn": "arn:aws:iam::112542574358:role/ecsTaskExecutionRole",
+  "networkMode": "bridge",
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "simulador-seguros-produto-backend",
+      "image": "112542574358.dkr.ecr.sa-east-1.amazonaws.com/simulador-seguros-produto-backend",
+      "cpu": 256,
+      "memory": 512,
+      "memoryReservation": 512,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "command": [],
+      "environment": [
+        {
+          "name": "AWS_REGION",
+          "value": "sa-east-1"
+        },
+        {
+          "name": "SECRETS_NAME",
+          "value": "simulador-seguros/produto/rds"
+        }
+      ],
+      "secrets": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/UltronMigracaoCluster/simulador-seguros-produto-backend",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "wget http://localhost:8080/produto/health -O - || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 10,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ],
+  "requiresCompatibilities": [],
+  "tags": [
+    {
+      "key": "projeto",
+      "value": "ultron"
+    },
+    {
+      "key": "subprojeto",
+      "value": "migracao"
+    },
+    {
+      "key": "ambiente",
+      "value": "producao"
+    }
+  ]
+}
