@@ -9,7 +9,7 @@ on:
 jobs:
   deploy_backend:
     name: Deploy Backend
-    uses: simulador-seg-spd/deploy-backend-action./.github/workflows/deploy-backend.yml@main
+    uses: simulador-seg-spd/deploy-backend-action./.github/workflows/deploy-backend.yml@4287179a2231a0dd7255454dd5d9f89f6eed1ed3
     with:
       project-language: 'java'
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
