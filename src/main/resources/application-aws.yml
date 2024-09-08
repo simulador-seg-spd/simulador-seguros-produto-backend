@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: 'simulador-seguros-produto-backend'
+
+  datasource:
+    url: jdbc-secretsmanager:sqlserver://${DB_SERVER};databaseName=${DB_NAME:produto};applicationName=${spring.application.name}
+    username: ${SECRETS_NAME:simulador-seguros/produto/rds}
+    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMSSQLServerDriver
+    ### HIKARI ###
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 8
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      auto-commit: true
