@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main # O deploy será acionado quando houver push na branch 'main'
+      - main
 
 jobs:
   deploy_backend:
     name: Deploy Backend
-    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@main
+    uses: simulador-seg-spd/deploy-backend-action/.github/workflows/deploy-backend.yml@v1
     with:
       project-language: 'java' # Ou 'python', dependendo do projeto
       aws-ecr-repository: 'produto/simulador-seguros-produto-backend'
